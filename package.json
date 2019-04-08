@@ -2,8 +2,9 @@
   "name": "boilerplate",
   "description": "",
   "version": "0.0.1",
+  "author": "nullabletypo",
+  "license": "MIT",
   "main": "dist/cjs/index.js",
-  "jsnext:main": "es/index.js",
   "module": "es/index.js",
   "files": [
     "es",
@@ -11,28 +12,15 @@
     "README.md",
     "LICENCE"
   ],
-  "scripts": {
-    "compile": "run-p compile:*",
-    "compile:dist": "tsc --module commonjs --outDir dist",
-    "compile:es": "tsc --module es2015 --outDir es",
-    "clean": "run-p clean:**",
-    "clean:dist": "rimraf dist",
-    "clean:es": "rimraf es",
-    "lint": "eslint src/**/*.ts",
-    "release:github": "git add . && git commit -am $npm_package_version --allow-empty && git tag $npm_package_version && git push && git push --tags",
-    "release": "run-s clean compile test release:github",
-    "test": "ava"
-  },
-  "author": "nullabletypo",
+  "homepage": "https://github.com/nullabletypo/boilerplate#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nullabletypo/boilerplate.git"
   },
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/nullabletypo/boilerplate/issues"
   },
-  "homepage": "https://github.com/nullabletypo/boilerplate#readme",
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-typescript": "^7.3.3",
@@ -76,5 +64,17 @@
         "tsx"
       ]
     }
+  },
+  "scripts": {
+    "compile": "run-p compile:*",
+    "compile:dist": "tsc --module commonjs --outDir dist",
+    "compile:es": "tsc --module es2015 --outDir es",
+    "clean": "run-p clean:**",
+    "clean:dist": "rimraf dist",
+    "clean:es": "rimraf es",
+    "lint": "eslint src/**/*.ts",
+    "release:github": "git add . && git commit -am $npm_package_version --allow-empty && git tag $npm_package_version && git push && git push --tags",
+    "release": "run-s clean compile test release:github",
+    "test": "ava"
   }
 }

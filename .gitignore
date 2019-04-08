@@ -120,5 +120,4 @@ typings/
 
 ### project ###
 test/compiled
-dist
 playground.*
