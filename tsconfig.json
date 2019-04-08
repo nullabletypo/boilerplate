@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "target": "es6",
-    "lib": ["es2017", "dom"],
+    "lib": ["es2016", "dom"],
     "declaration": true,
     "outDir": "dist",
     "sourceMap": true,
@@ -17,7 +17,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipDefaultLibCheck": true,
     "pretty": true,
-    "types": ["node"],
+    "types": ["node", "jest"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["/src/*"]

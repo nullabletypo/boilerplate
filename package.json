@@ -2,23 +2,6 @@
   "name": "boilerplate",
   "description": "",
   "version": "0.0.1",
-  "main": "dist/cjs/index.js",
-  "jsnext:main": "es/index.js",
-  "module": "es/index.js",
-  "files": [
-    "es",
-    "dist",
-    "README.md",
-    "LICENCE"
-  ],
-  "scripts": {
-    "start": "parcel src/index.html --port 3000 --out-dir public --open",
-    "build": "parcel build src/index.html",
-    "clean": "rimraf public/*",
-    "test": "ava",
-    "lint": "eslint src/**/*.ts",
-    "type-check": "tsc --noEmit --module esnext"
-  },
   "author": "nullabletypo",
   "repository": {
     "type": "git",
@@ -30,48 +13,30 @@
   },
   "homepage": "https://github.com/nullabletypo/boilerplate#readme",
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-typescript": "^7.3.3",
-    "@babel/register": "^7.4.0",
+    "@types/jest": "^24.0.11",
     "@types/node": "^11.13.0",
-    "ava": "^1.4.1",
     "eslint": "^5.16.0",
     "eslint-config-nullabletypo": "https://github.com/nullabletypo/eslint-config-nullabletypo",
+    "jest": "^24.7.1",
     "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
     "ts-node": "^8.0.3",
     "tsconfig-paths": "^3.8.0",
     "typescript": "^3.4.1"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-typescript"
-    ]
+  "scripts": {
+    "start": "parcel src/index.html --port 3000 --out-dir public --open",
+    "build": "parcel build src/index.html",
+    "clean": "rimraf public/*",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "type-check": "tsc --noEmit --module esnext"
   },
-  "ava": {
-    "files": [
-      "test/**/*test.{js,jsx,ts,tsx}"
-    ],
-    "sources": [
-      "src/**/*.{js,jsx,ts,tsx}"
-    ],
-    "cache": true,
-    "concurrency": 5,
-    "failWithoutAssertions": true,
-    "verbose": true,
-    "compileEnhacements": false,
-    "require": [
-      "./test/config/babel-test-register.js"
-    ],
-    "babel": {
-      "extensions": [
-        "js",
-        "jsx",
-        "ts",
-        "tsx"
-      ]
-    }
+  "jest": {
+    "preset": "ts-jest",
+    "verbose": true
   }
 }
