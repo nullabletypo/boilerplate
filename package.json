@@ -1,52 +1,54 @@
 {
-  "name": "boilerplate",
+  "name": "@typoerr/boilerplate",
   "description": "",
   "version": "0.0.1",
-  "author": "nullabletypo",
+  "author": "typoerr",
   "license": "MIT",
-  "source": "src/index.ts",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
   "files": [
     "dist",
     "README.md",
     "LICENCE"
   ],
-  "homepage": "https://github.com/nullabletypo/boilerplate#readme",
+  "homepage": "https://github.com/typoerr/boilerplate#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nullabletypo/boilerplate.git"
+    "url": "git+https://github.com/typoerr/boilerplate.git"
   },
   "bugs": {
-    "url": "https://github.com/nullabletypo/boilerplate/issues"
+    "url": "https://github.com/typoerr/boilerplate/issues"
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/node": "^11.13.0",
+    "@types/jest": "^24.0.12",
+    "@types/node": "^12.0.0",
+    "@typoerr/eslint-config": "^0.0.9",
     "eslint": "^5.16.0",
-    "eslint-config-nullabletypo": "https://github.com/nullabletypo/eslint-config-nullabletypo",
     "jest": "^24.7.1",
-    "microbundle": "^0.11.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.16.4",
+    "prettier": "^1.17.0",
     "rimraf": "^2.6.3",
     "ts-jest": "^24.0.2",
-    "ts-node": "^8.0.3",
+    "ts-node": "^8.1.0",
     "tsconfig-paths": "^3.8.0",
-    "typescript": "^3.4.1"
+    "typescript": "^3.4.5"
   },
   "scripts": {
-    "bundle": "run-p bundle:*",
-    "bundle:core": "microbundle --raw -f cjs,es --no-compress",
-    "bundle:min": "microbundle --raw -f cjs -o dist/index.min.js",
+    "compile": "run-p compile:*",
+    "compile:esm": "tsc --outDir dist/esm",
+    "compile:cjs": "tsc --outDir dist/cjs --module commonjs",
     "clean": "run-p clean:**",
     "clean:dist": "rimraf dist",
     "lint": "eslint src/**/*.ts",
-    "release:github": "git add . && git commit -am $npm_package_version --allow-empty && git tag $npm_package_version && git push && git push --tags",
-    "release": "run-s clean compile test release:github",
+    "postpublish": "run-s clean",
+    "npm-publish": "yarn publish",
+    "release": "run-s test compile npm-publish",
     "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "jest": {
     "preset": "ts-jest",
