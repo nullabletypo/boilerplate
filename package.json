@@ -8,6 +8,7 @@
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "files": [
+    "src",
     "dist",
     "README.md",
     "LICENCE"
@@ -37,14 +38,13 @@
   },
   "scripts": {
     "compile": "run-p compile:*",
-    "compile:esm": "tsc --outDir dist/esm",
+    "compile:esm": "tsc --outDir dist/esm --module esnext",
     "compile:cjs": "tsc --outDir dist/cjs --module commonjs",
     "clean": "run-p clean:**",
     "clean:dist": "rimraf dist",
     "lint": "eslint src/**/*.ts",
-    "postpublish": "run-s clean",
     "npm-publish": "yarn publish",
-    "release": "run-s test compile npm-publish",
+    "release": "run-s test compile npm-publish clean",
     "test": "jest"
   },
   "publishConfig": {
