@@ -1,0 +1,62 @@
+{
+  "name": "@typoerr/boilerplate",
+  "description": "",
+  "version": "0.0.1",
+  "author": "typoerr",
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "src",
+    "dist",
+    "README.md",
+    "LICENCE"
+  ],
+  "homepage": "https://github.com/typoerr/boilerplate#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typoerr/boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/typoerr/boilerplate/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.2",
+    "@typoerr/eslint-config": "^0.0.9",
+    "eslint": "^5.16.0",
+    "jest": "^24.8.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.17.1",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.1.0",
+    "tsconfig-paths": "^3.8.0",
+    "typescript": "^3.4.5"
+  },
+  "scripts": {
+    "compile": "run-p compile:*",
+    "compile:esm": "tsc --outDir dist/esm --module esnext",
+    "compile:cjs": "tsc --outDir dist/cjs --module commonjs",
+    "clean": "run-p clean:**",
+    "clean:dist": "rimraf dist",
+    "lint": "eslint src/**/*.ts",
+    "npm-publish": "yarn publish",
+    "release": "run-s test compile npm-publish clean",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "verbose": true,
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "test/tsconfig.json"
+      }
+    }
+  }
+}
